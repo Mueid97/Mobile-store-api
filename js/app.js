@@ -13,14 +13,13 @@ const searchField = () => {
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        if (data.status == false) {
-          errorField.innerText = "Please search valid Phone";      
+        if (data.status == false) {   
+         errorField.innerText = "Please search valid Phone";             
         } else {
           displayPhone(data.data.slice(0,20));
-          errorField.innerText = "";
+          errorField.innerText = "";  
           //console.log(data.data)
         }
-        //console.log(data)
       });
   };
 };
@@ -52,13 +51,11 @@ const seeDetails = info => {
   fetch(url)
     .then(res => res.json())
     .then(data => displaySinglePhone(data.data))
-   // displaySinglePhone(data.data)
 };
 
 //  display single phone 
 const displaySinglePhone = phone => {
   document.getElementById('displaySinglePhone').innerHTML = '';
- // document.getElementById('others')
   //console.log(phone);
   const displaySinglePhoneContainer = document.getElementById('displaySinglePhone');
   const div = document.createElement('div');
@@ -70,14 +67,14 @@ const displaySinglePhone = phone => {
           <div class="col-md-8 ">
             <div class="card-body">
               <h5 class="card-title"><span class="fw-bold">Brand:</span> ${phone.brand}</h5>
-              <p class="card-text"><span class="fw-bold">Release:</span> ${phone.releaseDate}</p>  
+              <p class="card-text"><span class="fw-bold">Release:</span> ${phone?.releaseDate}</p>  
               <p class="card-text "><span class="fw-bold">Name:</span> ${phone.name}</p>
 
               <p class="card-text"><span class="fw-bold">Dispaly:</span> ${phone.mainFeatures.displaySize}</p>  
               <p class="card-text"><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory}</p>  
               <p class="card-text"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.storage}</p> 
 
-              <div id="others" class="d-flex gap-2">
+              <div class="d-flex gap-2">
                 <p class="card-text"><span class="fw-bold">WLAN:</span> ${phone?.others?.WLAN}</p>   
                 <p class="card-text"><span class="fw-bold">Bluetooth:</span> ${phone?.others?.Bluetooth}</p>   
                 <p class="card-text"><span class="fw-bold">GPS:</span> ${phone?.others?.GPS}</p>   
