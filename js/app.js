@@ -54,3 +54,46 @@ const seeDetails = info => {
     .then(data => displaySinglePhone(data.data))
    // displaySinglePhone(data.data)
 };
+
+//  display single phone 
+const displaySinglePhone = phone => {
+  document.getElementById('displaySinglePhone').innerHTML = '';
+ // document.getElementById('others')
+  //console.log(phone);
+  const displaySinglePhoneContainer = document.getElementById('displaySinglePhone');
+  const div = document.createElement('div');
+  div.classList.add('row');
+  div.innerHTML = `
+    <div class="col-md-4 d-flex justify-content-center align-items-center">
+            <img src="${phone.image}" class="img-fluid rounded-start" alt="...">
+    </div>
+          <div class="col-md-8 ">
+            <div class="card-body">
+              <h5 class="card-title"><span class="fw-bold">Brand:</span> ${phone.brand}</h5>
+              <p class="card-text"><span class="fw-bold">Release:</span> ${phone.releaseDate}</p>  
+              <p class="card-text "><span class="fw-bold">Name:</span> ${phone.name}</p>
+
+              <p class="card-text"><span class="fw-bold">Dispaly:</span> ${phone.mainFeatures.displaySize}</p>  
+              <p class="card-text"><span class="fw-bold">Memory:</span> ${phone.mainFeatures.memory}</p>  
+              <p class="card-text"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.storage}</p> 
+
+              <div id="others" class="d-flex gap-2">
+                <p class="card-text"><span class="fw-bold">WLAN:</span> ${phone.others.WLAN}</p>   
+                <p class="card-text"><span class="fw-bold">Bluetooth:</span> ${phone.others.Bluetooth}</p>   
+                <p class="card-text"><span class="fw-bold">GPS:</span> ${phone.others.GPS}</p>   
+                <p class="card-text"><span class="fw-bold">USB:</span> ${phone.others.USB}</p>  
+             </div>   
+                
+              <div class="d-flex gap-2">
+                 <p class="card-text"><span class="fw-bold">Sensor:</span> ${phone.mainFeatures.sensors[0]}</p>  
+                 <p class="card-text">${phone.mainFeatures.sensors[1]}</p>  
+                 <p class="card-text">${phone.mainFeatures.sensors[2]}</p>  
+                 <p class="card-text">${phone.mainFeatures.sensors[3]}</p>  
+                 <p class="card-text">${phone.mainFeatures.sensors[4]}</p>  
+                 <p class="card-text">${phone.mainFeatures.sensors[5]}</p>  
+             </div>
+            </div>
+          </div>
+    `;
+  displaySinglePhoneContainer.appendChild(div);
+}
