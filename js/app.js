@@ -50,7 +50,14 @@ const seeDetails = info => {
   const url = `https://openapi.programming-hero.com/api/phone/${info}`;
   fetch(url)
     .then(res => res.json())
-    .then(data => displaySinglePhone(data.data))
+    .then(data => {
+      if(data.data.releaseDate===''){
+        alert('No release Date Found');
+        displaySinglePhone(data.data)
+      }else{
+        displaySinglePhone(data.data)
+      }
+    })
 };
 
 //  display single phone 
