@@ -78,10 +78,10 @@ const displaySinglePhone = phone => {
               <p class="card-text"><span class="fw-bold">Storage:</span> ${phone.mainFeatures.storage}</p> 
 
               <div id="others" class="d-flex gap-2">
-                <p class="card-text"><span class="fw-bold">WLAN:</span> ${phone.others.WLAN}</p>   
-                <p class="card-text"><span class="fw-bold">Bluetooth:</span> ${phone.others.Bluetooth}</p>   
-                <p class="card-text"><span class="fw-bold">GPS:</span> ${phone.others.GPS}</p>   
-                <p class="card-text"><span class="fw-bold">USB:</span> ${phone.others.USB}</p>  
+                <p class="card-text"><span class="fw-bold">WLAN:</span> ${phone?.others?.WLAN}</p>   
+                <p class="card-text"><span class="fw-bold">Bluetooth:</span> ${phone?.others?.Bluetooth}</p>   
+                <p class="card-text"><span class="fw-bold">GPS:</span> ${phone?.others?.GPS}</p>   
+                <p class="card-text"><span class="fw-bold">USB:</span> ${phone?.others?.USB}</p>  
              </div>   
                 
               <div class="d-flex gap-2">
