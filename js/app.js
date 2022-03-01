@@ -45,3 +45,12 @@ const displayPhone = phones => {
     dispalyContainer.appendChild(div);
   });
 };
+
+// see single phone 
+const seeDetails = info => {
+  const url = `https://openapi.programming-hero.com/api/phone/${info}`;
+  fetch(url)
+    .then(res => res.json())
+    .then(data => displaySinglePhone(data.data))
+   // displaySinglePhone(data.data)
+};
