@@ -23,5 +23,25 @@ const searchField = () => {
         //console.log(data)
       });
   };
+};
 
+// display Phones 
+const displayPhone = phones => {
+  const dispalyContainer = document.getElementById('display-phone');
+  phones.forEach(phone => {
+    //console.log(phone);
+    const div = document.createElement('div');
+    div.classList.add('col-lg-4');
+    div.innerHTML = `
+        <div class="card h-100">
+        <img src="${phone.image}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${phone.phone_name}</h5>
+          <p class="card-text">${phone.brand}</p>
+          <button onclick="seeDetails('${phone.slug}')" id="details" class="btn btn-primary" >Details</button>
+        </div>       
+      </div>
+        `;
+    dispalyContainer.appendChild(div);
+  });
 };
