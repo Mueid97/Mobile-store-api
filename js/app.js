@@ -6,22 +6,24 @@ const searchField = () => {
   const inputValue = inputField.value;
   inputField.value = '';
   const errorField = document.getElementById('error1');
-  if (inputValue == "") {
+  if (inputValue === 'number' || inputValue === "") {
     errorField.innerText = "Please Input Phone Name";
-  } else {
-    const url = ` https://openapi.programming-hero.com/api/phones?search=${inputValue}`;
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        if (data.status == false) {   
-         errorField.innerText = "Please Search Valid Phone";             
-        } else {
-          displayPhone(data.data.slice(0,20));
-          errorField.innerText = "";  
-          //console.log(data.data)
-        }
-      });
-  };
+  } else if (inputField <= 0){
+    errorField.innerText = "Please Input Phone Name";
+  }else {
+  const url = ` https://openapi.programming-hero.com/api/phones?search=${inputValue}`;
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      if (data.status == false) {
+        errorField.innerText = "Please Search Valid Phone";
+      } else {
+        displayPhone(data.data.slice(0, 20));
+        errorField.innerText = "";
+        //console.log(data.data)
+      }
+    });
+};
 };
 
 // display Phones 
@@ -51,10 +53,10 @@ const seeDetails = info => {
   fetch(url)
     .then(res => res.json())
     .then(data => {
-      if(data.data.releaseDate===''){
+      if (data.data.releaseDate === '') {
         alert('No release Date Found');
         displaySinglePhone(data.data)
-      }else{
+      } else {
         displaySinglePhone(data.data)
       }
     })
